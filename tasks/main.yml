@@ -1,0 +1,20 @@
+---
+
+# initially this is a common role working with installer.yml (and also installed as a submodule at
+# cicd/ansible/roles/ansible_local)
+# the installer-inventory.txt file is created in the installer.yml playbook, and dropped into here
+# the .gitignore includes that file, so it won't be checked in to the repo
+# but the ansible_local/tasks/main.yml file will be common and in the repo, and 
+# should be listed in site.yml as a role to be executed
+
+# place the installer-inventory.txt file into /etc
+
+- name: ansible_local | place /etc/installer-packages.txt file
+  copy:
+    src: installer-packages.txt
+    dest: /etc/installer-packages.txt
+    owner: root
+    group: root
+    mode: 0644
+
+
